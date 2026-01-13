@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Kitty Kat’s Palette</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 40px 20px;
+      background: #fff;
+      color: #111;
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 6px;
+      font-size: 32px;
+    }
+
+    p.subtitle {
+      margin-top: 0;
+      margin-bottom: 30px;
+      color: #666;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .gallery img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.9);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Kitty Kat’s Palette</h1>
+  <p class="subtitle">your subtitle here</p>
+
+  <div class="gallery">
+    <img src="art1.jpg" onclick="openLightbox(this.src)">
+    <img src="art2.jpg" onclick="openLightbox(this.src)">
+    <img src="art3.jpg" onclick="openLightbox(this.src)">
+  </div>
+
+  <div class="lightbox" id="lightbox" onclick="this.style.display='none'">
+    <img id="lightbox-img">
+  </div>
+
+  <script>
+    function openLightbox(src) {
+      document.getElementById("lightbox-img").src = src;
+      document.getElementById("lightbox").style.display = "flex";
+    }
+  </script>
+
+</body>
+</html>
